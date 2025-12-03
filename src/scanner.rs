@@ -55,8 +55,8 @@ pub fn scan_modules(module_dir: &PathBuf) -> Result<Vec<ModuleInfo>> {
                 continue;
             }
 
-            let disabled = path.join(DISABLE_FILE_NAME).exists() 
-                || path.join(REMOVE_FILE_NAME).exists();
+            let disabled =
+                path.join(DISABLE_FILE_NAME).exists() || path.join(REMOVE_FILE_NAME).exists();
             let skip = path.join(SKIP_MOUNT_FILE_NAME).exists();
             if disabled || skip {
                 continue;
@@ -66,8 +66,9 @@ pub fn scan_modules(module_dir: &PathBuf) -> Result<Vec<ModuleInfo>> {
             let prop_path = path.join("module.prop");
 
             let name = read_prop(&prop_path, "name").unwrap_or_else(|| id.clone());
-            let version = read_prop(&prop_path, "version").unwrap_or_default();
-            let description = read_prop(&prop_path, "description").unwrap_or_default();
+            let version = read_prop(&prop_path, "version").unwrap_or_else(|| "unknown".to_string());
+            let description =
+                read_prop(&prop_path, "description").unwrap_or_else(|| "unknown".to_string());
 
             modules.push(ModuleInfo {
                 id,
