@@ -21,20 +21,10 @@ use env_logger::Builder;
 use mimalloc::MiMalloc;
 use rustix::mount::{MountFlags, mount};
 
-use crate::{config::Config, defs::CONFIG_FILE_DEFAULT};
+use crate::config::Config;
 
 #[global_allocator]
 static GLOBAL: MiMalloc = MiMalloc;
-
-fn load_config() -> Config {
-    if let Ok(config) = Config::load_default() {
-        log::info!("Loaded config from default location: {CONFIG_FILE_DEFAULT}");
-        return config;
-    }
-
-    log::info!("Using default configuration (no config file found)");
-    Config::default()
-}
 
 fn init_logger(verbose: bool) {
     let level = if verbose {
@@ -60,7 +50,7 @@ fn init_logger(verbose: bool) {
 }
 
 fn main() -> Result<()> {
-    let config = load_config();
+    let config = Config::load_default().unwrap_or_default();
 
     let args: Vec<_> = std::env::args().collect();
 
