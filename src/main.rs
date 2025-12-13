@@ -12,6 +12,8 @@ mod config;
 mod defs;
 mod magic_mount;
 mod scanner;
+#[cfg(any(target_os = "linux", target_os = "android"))]
+mod try_umount;
 mod utils;
 
 use std::io::Write;

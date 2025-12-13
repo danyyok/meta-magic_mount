@@ -1,6 +1,4 @@
 mod node;
-#[cfg(any(target_os = "linux", target_os = "android"))]
-mod try_umount;
 mod utils;
 
 use std::{
@@ -26,7 +24,7 @@ use crate::{
 };
 
 #[cfg(any(target_os = "linux", target_os = "android"))]
-use crate::magic_mount::try_umount::send_unmountable;
+use crate::try_umount::send_unmountable;
 
 struct MagicMount {
     node: Node,

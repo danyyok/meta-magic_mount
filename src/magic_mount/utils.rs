@@ -12,7 +12,7 @@ use crate::{
 };
 
 #[cfg(any(target_os = "linux", target_os = "android"))]
-use crate::magic_mount::try_umount::send_unmountable;
+use crate::try_umount::send_unmountable;
 
 impl MagicMount {
     pub fn check_tmpfs(&mut self) {
