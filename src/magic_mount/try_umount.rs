@@ -14,6 +14,9 @@ use crate::defs::{DISABLE_FILE_NAME, REMOVE_FILE_NAME, SKIP_MOUNT_FILE_NAME};
 
 const K: u32 = b'K' as u32;
 const KSU_INSTALL_MAGIC1: u32 = 0xDEAD_BEEF;
+#[cfg(target_env = "gnu")]
+const KSU_IOCTL_ADD_TRY_UMOUNT: u64 = libc::_IOW::<()>(K, 18);
+#[cfg(not(target_env = "gnu"))]
 const KSU_IOCTL_ADD_TRY_UMOUNT: i32 = libc::_IOW::<()>(K, 18);
 const KSU_INSTALL_MAGIC2: u32 = 0xCAFE_BABE;
 static DRIVER_FD: OnceLock<RawFd> = OnceLock::new();
@@ -79,7 +82,7 @@ where
 
     unsafe {
         #[cfg(target_env = "gnu")]
-        let ret = libc::ioctl(fd as libc::c_int, KSU_IOCTL_ADD_TRY_UMOUNT as u64, &cmd);
+        let ret = libc::ioctl(fd as libc::c_int, KSU_IOCTL_ADD_TRY_UMOUNT, &cmd);
 
         #[cfg(not(target_env = "gnu"))]
         let ret = libc::ioctl(fd as libc::c_int, KSU_IOCTL_ADD_TRY_UMOUNT, &cmd);
