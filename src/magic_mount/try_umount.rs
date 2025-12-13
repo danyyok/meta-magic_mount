@@ -1,7 +1,9 @@
-use std::{ffi::CString, io, os::fd::RawFd, path::Path, sync::OnceLock};
+use std::{ffi::CString, fs::read_dir, io, os::fd::RawFd, path::Path, sync::OnceLock};
 
 use anyhow::Result;
 use rustix::path::Arg;
+
+use crate::defs::{DISABLE_FILE_NAME, REMOVE_FILE_NAME, SKIP_MOUNT_FILE_NAME};
 
 const K: u32 = b'K' as u32;
 const KSU_INSTALL_MAGIC1: u32 = 0xDEAD_BEEF;
@@ -20,6 +22,32 @@ pub fn send_unmountable<P>(target: P) -> Result<()>
 where
     P: AsRef<Path>,
 {
+    for entry in read_dir("/data/adb/modules")?.flatten() {
+        let path = entry.path();
+
+        if !path.is_dir() {
+            continue;
+        }
+
+        if !path.join("module.prop").exists() {
+            continue;
+        }
+
+        let disabled =
+            path.join(DISABLE_FILE_NAME).exists() || path.join(REMOVE_FILE_NAME).exists();
+        let skip = path.join(SKIP_MOUNT_FILE_NAME).exists();
+        if disabled || skip {
+            continue;
+        }
+
+        if let Some(name) = path.file_name()
+            && name.to_string_lossy().to_string().contains("zygisksu")
+        {
+            log::warn!("zn was detected, and try_umount was cancelled.");
+            return Ok(());
+        }
+    }
+
     let path = CString::new(target.as_ref().as_str()?)?;
     let cmd = KsuAddTryUmount {
         arg: path.as_ptr() as u64,
