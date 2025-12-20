@@ -65,13 +65,13 @@ where
                 continue;
             }
 
-            let id = entry.file_name().to_string_lossy().to_string();
             let prop_path = path.join("module.prop");
 
             let Ok(prop) = fs::read_to_string(prop_path) else {
                 continue;
             };
-            let name = read_prop(&prop, "id").unwrap_or_else(|| id.clone());
+            let id = read_prop(&prop, "id").unwrap_or_else(|| "unknown".to_string());
+            let name = read_prop(&prop, "name").unwrap_or_else(|| id.clone());
             let version = read_prop(&prop, "version").unwrap_or_else(|| "unknown".to_string());
             let author = read_prop(&prop, "author").unwrap_or_else(|| "unknown".to_string());
             let description =
