@@ -1,11 +1,5 @@
 #![deny(clippy::all, clippy::pedantic)]
 #![warn(clippy::nursery)]
-#![allow(
-    clippy::cast_possible_truncation,
-    clippy::cast_precision_loss,
-    clippy::cast_possible_wrap,
-    clippy::cast_lossless
-)]
 
 mod config;
 mod defs;
