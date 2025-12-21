@@ -45,17 +45,6 @@ pub struct Node {
     pub skip: bool,
 }
 
-impl fmt::Display for NodeFileType {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        match self {
-            Self::Directory => write!(f, "Directory"),
-            Self::RegularFile => write!(f, "RegularFile"),
-            Self::Symlink => write!(f, "Symlink"),
-            Self::Whiteout => write!(f, "Whiteout"),
-        }
-    }
-}
-
 impl fmt::Display for Node {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(
