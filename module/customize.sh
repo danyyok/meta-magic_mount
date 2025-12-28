@@ -35,7 +35,8 @@ esac
 ui_print "- Installing architecture-specific binary"
 
 # Rename the selected binary to the generic name
-mv "$MODPATH/$ARCH_BINARY" "$MODPATH/meta-mm" || abort "! Failed to rename binary"
+mv "$MODPATH/bin/$ARCH_BINARY" "$MODPATH/meta-mm" || abort "! Failed to rename binary"
+rm -rf "$MODPATH/bin"
 
 # Ensure the binary is executable
 chmod 755 "$MODPATH/meta-mm" || abort "! Failed to set permissions"

@@ -132,19 +132,22 @@ fn build() -> Result<()> {
         fs::remove_file(temp_dir.join(".gitignore")).unwrap();
     }
 
+    let bin_path = temp_dir.join("bin");
+
+    let _ = fs::create_dir_all(&bin_path);
     file::copy(
         aarch64_bin_path(),
-        temp_dir.join("magic_mount_rs.aarch64"),
+        bin_path.join("magic_mount_rs.aarch64"),
         &file::CopyOptions::new().overwrite(true),
     )?;
     file::copy(
         armv7_bin_path(),
-        temp_dir.join("magic_mount_rs.armv7"),
+        bin_path.join("magic_mount_rs.armv7"),
         &file::CopyOptions::new().overwrite(true),
     )?;
     file::copy(
         x64_bin_path(),
-        temp_dir.join("magic_mount_rs.x64"),
+        bin_path.join("magic_mount_rs.x64"),
         &file::CopyOptions::new().overwrite(true),
     )?;
 
