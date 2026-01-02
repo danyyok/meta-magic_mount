@@ -41,8 +41,8 @@ rm -rf "$MODPATH/bin"
 # Ensure the binary is executable
 chmod 755 "$MODPATH/meta-mm" || abort "! Failed to set permissions"
 
-if [ -f "$MODPATH/daemonize-mmrs" ]; then
-  chmod 755 "$MODPATH/daemonize-mmrs" || abort "! Failed to set permissions"
+if [ -f "$MODPATH/loader" ]; then
+  chmod 755 "$MODPATH/loader" || abort "! Failed to set permissions"
 fi
 
 ui_print "- Architecture-specific binary installed successfully"
