@@ -20,11 +20,11 @@
     "status": "Статус",
     "config": "Конфиг",
     "modules": "Модули",
-    "info": "Инфа"
+    "info": "Инфо"
   },
   "status": {
     "sysInfoTitle": "Системные детали",
-    "deviceTitle": "Информация об пепе шнепе фаа",
+    "deviceTitle": "Информация об пепе фаа",
     "moduleTitle": "Модули",
     "moduleActive": "Активные модули",
     "modelLabel": "Модель",
@@ -41,7 +41,7 @@
     "umountOff": "По умолчанию",
     "umountOn": "Включено",
     "tempDir": "Времен. путь",
-    "mountSource": "Монтировать Источник",
+    "mountSource": "Источник Монтирования",
     "mountSourceDesc": "Глобальное пространство имен монтирования (например KSU)",
     "partitions": "Дополнительные Разделы",
     "partitionsDesc": "Добавить разделы для монтирования",
