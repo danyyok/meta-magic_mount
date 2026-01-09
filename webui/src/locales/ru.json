@@ -1,0 +1,83 @@
+{
+  "lang": { "display": "Русский" },
+  "common": {
+    "appName": "Magic Mount",
+    "saving": "Сохранение...",
+    "theme": "Переключить тему",
+    "language": "Язык",
+    "themeAuto": "Авто (Система)",
+    "themeLight": "Светлый Режим",
+    "themeDark": "Темный Режим",
+    "cancel": "Отмена",
+    "reboot": "Перезапуск",
+    "rebootTitle": "Перезапустить систему?",
+    "rebootConfirm": "Вы уверены что хотите перезапустить телефон?",
+    "rebootFailed": "Ошибка перезапуска",
+    "resetSuccess": "Конфиг успешно сброшен",
+    "resetFailed": "Не удалось сбросить конфиг"
+  },
+  "tabs": {
+    "status": "Статус",
+    "config": "Конфиг",
+    "modules": "Модули",
+    "info": "Инфа"
+  },
+  "status": {
+    "sysInfoTitle": "Системные детали",
+    "deviceTitle": "Информация об пепе шнепе фаа",
+    "moduleTitle": "Модули",
+    "moduleActive": "Активные модули",
+    "modelLabel": "Модель",
+    "androidLabel": "Android",
+    "kernelLabel": "Ядро",
+    "selinuxLabel": "SELinux",
+    "copy": "Скопировать инфу",
+    "copySuccess": "Скопировано в буфер обмена",
+    "refresh": "Обновить"
+  },
+  "config": {
+    "title": "Конфигурация",
+    "umountLabel": "Включить Размонтирование Модулей",
+    "umountOff": "По умолчанию",
+    "umountOn": "Включено",
+    "tempDir": "Времен. путь",
+    "mountSource": "Монтировать Источник",
+    "mountSourceDesc": "Глобальное пространство имен монтирования (например KSU)",
+    "partitions": "Дополнительные Разделы",
+    "partitionsDesc": "Добавить разделы для монтирования",
+    "autoPlaceholder": "Автоматический выбор если пусто",
+    "reload": "Перезагрузить",
+    "save": "Сохранить Конфиг",
+    "reset": "Сброс",
+    "loadSuccess": "Конфиг успешно загружен",
+    "loadError": "Не удалось загрузить конфиг",
+    "loadDefault": "Загружен конфиг по умолчанию",
+    "saveSuccess": "Конфигурация сохранена",
+    "saveFailed": "Не удалось сохранить конфигурацию",
+    "fixBottomNav": "Фикс навбара"
+  },
+  "modules": {
+    "title": "Активные Модули",
+    "desc": "Модули в этом списке обнаружены и управляются Magic Mount.",
+    "scanning": "Сканирование...",
+    "reload": "Обновить",
+    "save": "Сохранить Изменения",
+    "empty": "Активные модули не обнаружены",
+    "scanError": "Не удалось просканировать модули",
+    "saveSuccess": "Сохранено",
+    "saveFailed": "Не удалось сохранить",
+    "searchPlaceholder": "Поиск модулей...",
+    "filterLabel": "Фильтр:",
+    "filterAll": "Все",
+    "toggleError": "Не удалось переключить"
+  },
+  "info": {
+    "title": "Об",
+    "projectLink": "Репозиторий",
+    "donate": "Донатик",
+    "contributors": "Контрибьютары",
+    "loading": "Загрузка контрибьютаров...",
+    "loadFail": "Не удалось загрузить (лимит API)",
+    "noBio": "нет биографии."
+  }
+}
